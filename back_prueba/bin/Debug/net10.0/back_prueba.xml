@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>back_prueba</name>
+    </assembly>
+    <members>
+        <member name="T:back_prueba.Controllers.SamplesController">
+            <summary>Registro, consulta y cambio de estado de muestras.</summary>
+        </member>
+        <member name="M:back_prueba.Controllers.SamplesController.#ctor(back_prueba.Services.ISampleService)">
+            <summary>Registro, consulta y cambio de estado de muestras.</summary>
+        </member>
+        <member name="M:back_prueba.Controllers.SamplesController.Create(back_prueba.Dtos.CreateSampleRequest,System.Threading.CancellationToken)">
+            <summary>Registra una muestra con sus examenes</summary>
+            <response code="201">Muestra creada.</response>
+            <response code="400">Datos inválidos o códigos de examen inexistentes.</response>
+            <response code="500">Error inesperado.</response>
+        </member>
+        <member name="M:back_prueba.Controllers.SamplesController.GetPage(back_prueba.Dtos.PaginationQuery,System.Threading.CancellationToken)">
+            <summary>Lista las muestras paginadas, de la más reciente a la más antigua.</summary>
+            <response code="200">Página de muestras.</response>
+            <response code="400">Parámetros de paginación inválidos.</response>
+        </member>
+        <member name="M:back_prueba.Controllers.SamplesController.UpdateStatus(System.Int32,back_prueba.Dtos.UpdateSampleStatusRequest,System.Threading.CancellationToken)">
+            <summary>Cambia el estado de una muestra.</summary>
+            <param name="id">Id de la muestra.</param>
+            <param name="request">Nuevo estado y motivo de rechazo cuando aplique.</param>
+            <response code="200">Muestra actualizada.</response>
+            <response code="400">Estado inválido o falta el motivo de rechazo.</response>
+            <response code="404">La muestra no existe.</response>
+            <response code="409">Transición de estado no permitida.</response>
+        </member>
+        <member name="T:back_prueba.Exceptions.AppException">
+            <summary>Base de las excepciones de negocio; cada una define su código HTTP.</summary>
+        </member>
+        <member name="M:back_prueba.Exceptions.AppException.#ctor(System.String,System.Int32,System.Collections.Generic.IDictionary{System.String,System.String[]})">
+            <summary>Base de las excepciones de negocio; cada una define su código HTTP.</summary>
+        </member>
+        <member name="T:back_prueba.Exceptions.ValidationException">
+            <summary>400: regla de validación que depende de datos (p. ej. códigos inexistentes).</summary>
+        </member>
+        <member name="M:back_prueba.Exceptions.ValidationException.#ctor(System.String,System.Collections.Generic.IDictionary{System.String,System.String[]})">
+            <summary>400: regla de validación que depende de datos (p. ej. códigos inexistentes).</summary>
+        </member>
+        <member name="T:back_prueba.Exceptions.NotFoundException">
+            <summary>404: recurso no encontrado.</summary>
+        </member>
+        <member name="M:back_prueba.Exceptions.NotFoundException.#ctor(System.String)">
+            <summary>404: recurso no encontrado.</summary>
+        </member>
+        <member name="T:back_prueba.Exceptions.ConflictException">
+            <summary>409: conflicto con una regla de negocio.</summary>
+        </member>
+        <member name="M:back_prueba.Exceptions.ConflictException.#ctor(System.String)">
+            <summary>409: conflicto con una regla de negocio.</summary>
+        </member>
+        <member name="T:Program">
+            <summary>
+            Auto-generated public partial Program class for top-level statement apps.
+            </summary>
+        </member>
+    </members>
+</doc>
